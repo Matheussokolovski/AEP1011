@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaproveita+ Frontend</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Reaproveita+</h1>
+            <nav class="nav">
+                <a href="#" id="nav-alimentos" class="nav-link active">Ver Alimentos</a>
+                <a href="#" id="nav-login" class="nav-link public-only">Login</a>
+                <a href="#" id="nav-cadastro" class="nav-link btn btn-primary public-only">Cadastrar</a>
+                
+                <a href="#" id="nav-doar-alimento" class="nav-link donor-only" style="display:none;">+ Doar Alimento</a>
+                <a href="#" id="nav-minhas-doacoes" class="nav-link donor-only" style="display:none;">Minhas Doações</a>
+
+                <a href="#" id="nav-minhas-reservas" class="nav-link beneficiary-only" style="display:none;">Minhas Reservas</a>
+                
+                <a href="#" id="nav-logout" class="nav-link" style="display:none;">Logout</a>
+            </nav>
+        </div>
+        <div id="info-usuario" class="container"></div>
+    </header>
+
+    <main class="container">
+        
+        <section id="view-alimentos" class="view active">
+            <h2>Alimentos Disponíveis</h2>
+            <div id="lista-alimentos" class="card-grid">
+                </div>
+        </section>
+
+        <section id="view-login" class="view">
+            <div class="form-container">
+                <h2>Login</h2>
+                <p>Entre para doar ou receber alimentos.</p>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label for="email-login">E-mail</label>
+                        <input type="email" id="email-login" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha-login">Senha</label>
+                        <input type="password" id="senha-login" required>
+                    </div>
+                    <button type="submit" class="btn btn-full">Entrar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="view-cadastro" class="view">
+            <div class="form-container">
+                <h2>Crie sua Conta</h2>
+                <form id="form-cadastro">
+                    <fieldset>
+                        <legend>Dados Pessoais</legend>
+                        <div class="form-group"><label>Nome Completo</label><input name="nome" required></div>
+                        <div class="form-group"><label>E-mail</label><input name="email" type="email" required></div>
+                        <div class="form-group"><label>Senha</label><input name="senha" type="password" required></div>
+                        <div class="form-group"><label>Telefone</label><input name="telefone" placeholder="(XX) XXXXX-XXXX"></div>
+                        <div class="form-group"><label>Tipo de Perfil</label>
+                            <select name="tipoPerfil" required>
+                                <option value="DOADOR">Quero doar</option>
+                                <option value="BENEFICIARIO">Quero receber</option>
+                            </select>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Endereço</legend>
+                        <div class="form-group"><label>CEP</label><input name="cep" required></div>
+                        <div class="form-group"><label>Rua</label><input name="rua" required></div>
+                        <div class="form-group-inline">
+                            <div class="form-group"><label>Número</label><input name="numero"></div>
+                            <div class="form-group"><label>Complemento</label><input name="complemento"></div>
+                        </div>
+                        <div class="form-group"><label>Bairro</label><input name="bairro" required></div>
+                        <div class="form-group-inline">
+                            <div class="form-group"><label>Cidade</label><input name="cidade" required></div>
+                            <div class="form-group"><label>Estado (UF)</label><input name="estado" maxlength="2" required></div>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn btn-full">Cadastrar</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="view-doar-alimento" class="view">
+            <div class="form-container">
+                <h2>Cadastrar Novo Alimento</h2>
+                <form id="form-doar-alimento">
+                    <div class="form-group">
+                        <label>Nome do Alimento</label>
+                        <input name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Descrição</label>
+                        <textarea name="descricao" rows="4"></textarea>
+                    </div>
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label>Quantidade</label>
+                            <input name="quantidade" type="number" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Unidade de Medida</label>
+                            <select name="unidadeMedida" required>
+                                <option value="UNIDADE">Unidade</option>
+                                <option value="KG">Kg</option>
+                                <option value="PACOTE">Pacote</option>
+                                <option value="LITRO">Litro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Data de Validade</label>
+                        <input name="dataValidade" type="date" required>
+                    </div>
+                    <button type="submit" class="btn btn-full">Postar Alimento</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="view-minhas-doacoes" class="view">
+            <h2>Meus Alimentos Doados</h2>
+            <div id="lista-minhas-doacoes" class="card-grid">
+                </div>
+        </section>
+
+        <section id="view-minhas-reservas" class="view">
+            <h2>Minhas Reservas</h2>
+            <div id="lista-minhas-reservas" class="card-grid">
+                </div>
+        </section>
+
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+            <p>Carregando...</p>
+        </div>
+        
+        <div id="error-toast" class="toast"></div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
